@@ -1,0 +1,22 @@
+.mylogo {
+    font-family: initial;
+    letter-spacing: 0.2rem;
+}
+.bg-nav {
+    background-color: #1a1919;
+}
+.btn-nav-custom {
+    background-color: #1a1919;
+    color: #fff;
+}
+.btn-nav-custom:hover {
+    color: #004DC0;
+}
+.footer-custom{
+    text-align: center;
+    bottom: 0;
+    position: fixed;
+    background-color: #1a1919;
+    width: 100%;
+    padding-top: 1%;
+}
