@@ -40,7 +40,7 @@
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Produits</a>
+                    <a class="nav-link" href="{{ path('app_products') }}">Produits</a>
                 </li>
                 <li class="nav-item active">
                     <a class="nav-link" href="#">À propos de nous</a>
@@ -63,6 +63,9 @@
            {% else %}
              <a href="{{ path('app_login') }}">Connexion</a> | <a href="{{ path('app_register') }}">Inscription</a>
          {% endif %} 
+             <a href="{{ path('app_cart') }}">
+        <img src="{{ asset('assets/img/shopping-cart.png') }}" class="cart-icon" alt="Mon panier">
+    </a>
          </div>
     
 

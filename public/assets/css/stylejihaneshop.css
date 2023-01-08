@@ -1,3 +1,6 @@
+body{
+    position: relative;
+}
 .mylogo {
     font-family: initial;
     letter-spacing: 0.2rem;
@@ -14,9 +17,61 @@
 }
 .footer-custom{
     text-align: center;
-    bottom: 0;
-    position: fixed;
+    position: absolute;
     background-color: #1a1919;
     width: 100%;
     padding-top: 1%;
+    margin-top: 50px;
+}
+
+.product-item h5 {
+    display: inline-block;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 18px;
+    color: #7e858b;
+    max-width: 100%;
+    position: relative;
+    text-transform: uppercase;
+    margin-bottom: 1px;   
+}
+.product-item .product-subtitle{
+    font-size: 14px;
+    display: block;
+}
+.product-item .product-price{
+    color: #1f49b6;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 22px;
+}
+.product-container{
+    margin-bottom: 150px;
+}
+.product-item-wrapper{
+    position: relative;
+    box-shadow: 0 2px 5px rgb(0 0 0 / 8%);
+    border-radius: 5px;
+    transition: box-shadow .3s ease-in;
+    margin: 4% 0 4% 0;
+}
+.product-item-button{
+    padding: 5% 0;
+}
+.product-detail-price{
+    color: #1f49b6;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 22px;
+}
+.cart-icon{
+    height: 20px;
+    padding-left: 25px;
+}
+.btn-qte{
+    padding: 7%;
+    height: 100%;
+    border: 1px solid hsla(195,4%,82%,.5);
+    border-radius: 4px;
+    cursor: pointer;
 }

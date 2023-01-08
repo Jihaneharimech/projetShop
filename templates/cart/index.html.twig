@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello CartController!{% endblock %}
+
+{% block content %}
+    <h1>PANIER</h1>
+{% if cart|length > 0 %}
+        <table class="table mt-3">
+    <thead>
+        <tr>
+        <th scope="col">Article</th>
+        <th scope="col"></th>
+        <th scope="col">Qté</th>
+        <th scope="col">Prix</th>
+        <th scope="col">Total</th>
+        <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody class="table-group-divider">
+    {% set total = null %}
+    {% for product in cart %}
+        <tr>
+        <td> <img src="/uploads/products/image/{{product.product.illustration}}" height="75x" alt="{{product.product.name}}"></td>
+        <td>{{product.product.name}}</br>
+        <small>{{product.product.subtitle}}</small>
+        </td>
+        <td>
+        <a href="{{ path('app_decrease_cart', { 'id' : product.product.id }) }}">
+                <img src="{{ asset('assets/img/minus-icon.svg') }}" class="btn-qte mr-2" alt="Retirer une quantité à mon produit">
+        </a>
+        {{product.quantity}}
+        <a href="{{ path('app_add_cart', { 'id' : product.product.id }) }}">
+                        <img src="{{ asset('assets/img/plus-icon.svg') }}" class="btn-qte ml-2" alt="Ajouter un produit">
+         </a>
+        </td>
+        
+        <td>{{ (product.product.price /100) |number_format(2,',','.')}} MAD</td>
+        <td>{{ ((product.product.price)*(product.quantity) /100) |number_format(2,',','.')}} MAD</td>
+        <td>
+        <a href="{{ path('app_delete_cart', { 'id' : product.product.id }) }}">
+        <img src="{{ asset('assets/img/deleteIcone.png') }}" height="20px" alt="Supprimer mon produit"></a>
+        </td>
+        </tr>
+        {% set total = total + (product.product.price * product.quantity) %}
+        {% endfor %}
+    </tbody>
+    </table>
+
+    <div class="text-right mb-5">
+                <b>Nombre de produit :</b> {{ cart|length }}<br/>
+                <b>Total de mon panier :</b> {{ (total / 100)|number_format(2, ',', '.') }} MAD
+                <a href="" class="btn btn-success btn-block mt-3">Commander</a>
+            </div>
+{% else %}
+    <hr>
+    <p><b>Votre panier est vide</b><p>
+    <a href="{{ path('app_products') }}" class="btn btn-info">Voir nos Produits</a>
+{% endif %}
+
+{% endblock %}
