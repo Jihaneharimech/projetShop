@@ -50,6 +50,7 @@ class CartController extends AbstractController
         return $this->redirectToRoute('app_cart');
     }
 
+    //diminuer la quantite de produit
     #[Route('/cart/decrease/{id}', name: 'app_decrease_cart')]
     public function decrease(Cart $cart, $id)
     {
