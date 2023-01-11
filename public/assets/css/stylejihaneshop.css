@@ -75,3 +75,23 @@ body{
     border-radius: 4px;
     cursor: pointer;
 }
+.summary-box{
+    min-height: 260px;
+    background-color: #f8f8f9;
+    margin-bottom: 20px;
+    padding: 30px;
+}
+.summary-box-title{
+    margin-bottom: 15px;
+}
+.summary-box-title h3{
+    color: #302e2b;
+    font-weight: 600;
+    display: inline;
+    font-size: 13px;
+}
+.summary-box h4{
+    color: #7c878e;
+    margin-bottom: 15px;
+    font-size: 12px;
+}

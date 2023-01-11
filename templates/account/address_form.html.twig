@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajouter une nouvelle adresse{% endblock %}
+
+{% block content %}
+<a href="{{ path('app_account_address_add') }}" class="btn btn-info btn-sm float-right"> Ajouter une adresse </a>
+    <h1>Ajouter une nouvelle adresse</h1>
+    {{ form(form) }}
+    <a href="{{ path('app_account') }}"> revenir </a>
+
+
+
+{% endblock %}

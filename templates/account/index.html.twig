@@ -3,6 +3,39 @@
 {% block title %}Compte{% endblock %}
 
 {% block content %}
-<h1>bonjour {{ app.user.firstname }}{{ app.user.lastname }}</h1>
-<a href="{{ path('app_account_password') }}"> Modifier le mot de passe </a>
+
+<div class="row">
+        <div class="col-sm-6">
+                <div class="summary-box">
+                  <div class="summary-box-title">
+                    <h3>MON PROFIL</h3>
+                  </div>
+                    <h4>NOM ET NOM DE FAMILLE : {{ app.user.firstname }} {{ app.user.lastname }}</h4>
+                    <h4>ADRESSE E-MAIL : {{ app.user.email }}</h4>
+                    <a href="{{ path('app_account_password') }}"> Modifier le mot de passe </a>
+                </div>
+        </div>
+
+        <div class="col-sm-6">
+                <div class="summary-box">
+                  <div class="summary-box-title">
+                    <h3>MON ADRESSE</h3>
+                  </div>
+                    <h4>{{ app.user.firstname }} {{ app.user.lastname }}</h4>
+                    <a href="{{ path('app_account_address_add') }}"> + Ajouter une nouvelle adresse</a></br>
+                    <a href="{{ path('app_account_address') }}"> Voir toutes les adresses </a>
+                </div>
+        </div>
+                <div class="col-sm-6">
+                <div class="summary-box">
+                  <div class="summary-box-title">
+                    <h3>MES COMMANDES</h3>
+                  </div>
+                    <h4>{{ app.user.firstname }} {{ app.user.lastname }}</h4>
+                    <a href="{{ path('app_account_address') }}"> Voir toutes les adresses </a>
+                </div>
+        </div>
+</div>
+
+
 {% endblock %}
