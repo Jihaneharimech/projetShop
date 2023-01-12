@@ -11,7 +11,23 @@
     VOUS N’AVEZ PAS ENCORE ENREGISTRER L’ADRESSE 
          <a class=" float-right" href="{{ path('app_account_address_add') }}"> + Ajouter une nouvelle adresse</a>
  {% else %}
- 
+    <div class="row">
+            {% for address in app.user.adresses %}
+                <div class="col-md-4">
+                    <div class="card" style="width: 18rem;">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ address.name }}</h5>
+                            <p class="card-text">
+                                {{ address.adress }},<br/>
+                                {{ address.postal }} - {{ address.city }} - {{ address.county }}
+                            </p>
+                            <a href="">Modifier</a> | <a href="">Supprimer</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
  {% endif %}
 
 {% endblock %}

@@ -5,9 +5,19 @@
 {% block content %}
 <a href="{{ path('app_account_address_add') }}" class="btn btn-info btn-sm float-right"> Ajouter une adresse </a>
     <h1>Ajouter une nouvelle adresse</h1>
-    {{ form(form) }}
-    <a href="{{ path('app_account') }}"> revenir </a>
+   <hr>
+    {{ form_start(form) }}
+    <div class="row">
+        <div class="col-md-12">{{ form_row(form.name) }}</div>
+        <div class="col-md-6">{{ form_row(form.firstname) }}</div>
+        <div class="col-md-6">{{ form_row(form.lastname) }}</div>
+        <div class="col-md-6">{{ form_row(form.company) }}</div>
+        <div class="col-md-6">{{ form_row(form.adress) }}</div>
+        <div class="col-md-6">{{ form_row(form.postal) }}</div>
+        <div class="col-md-6">{{ form_row(form.city) }}</div>
+        <div class="col-md-6">{{ form_row(form.county) }}</div>
+        <div class="col-md-6">{{ form_row(form.phone) }}</div>
+    </div>
 
-
-
+    {{ form_end(form) }}
 {% endblock %}
