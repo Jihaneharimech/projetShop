@@ -25,6 +25,13 @@ class OrderType extends AbstractType
                 'multiple' => false,
                 'expanded' => true
             ])
+            ->add('carriers', EntityType::class, [
+                'label' => 'Choisissez votre transporteur',
+                'required' => true,
+                'class' => Carrier::class,
+                'multiple' => false,
+                'expanded' => true
+            ])
             ->add('submit', SubmitType::class, [
                 'label' => 'Valider ma commande',
                 'attr' => [
