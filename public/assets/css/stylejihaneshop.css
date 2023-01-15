@@ -99,3 +99,16 @@ body{
     max-width: 40%;
     margin: 0 auto;
 }
+.form-check{
+    background-color: #f8f8f9;
+    padding: 20px 65px;
+    margin-top: 7px;    
+}
+.col-form-label{
+    font-weight: bold;
+}
+.order-summary{
+    background-color: #f8f8f9;
+    padding: 20px;
+    margin-top: 22px;
+}

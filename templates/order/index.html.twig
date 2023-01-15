@@ -13,7 +13,7 @@
                         {{ form(form) }}
                         <a href="{{ path('app_account_address_add') }}">Ajouter une nouvelle adresse</a> 
                 {% endset %}
-                        {{ formHtml|replace({'[br]' : '<br/>'})|raw }}
+                {{ formHtml|replace({'[br]' : '<br/>'})|raw }}
             
             </div>
             <div class="col-md-6">
@@ -21,6 +21,24 @@
                         <b>Récap de ma commande</b><br/>
                         <p>Retrouvez le récapitulatif de vos produits.</p>
                     </div>
+                   <div class="order-summary">
+                {% for key,product in cart %}
+                    <div class="row {% if key > 0 %}mt-2{% endif %}">
+                        <div class="col-2">
+                            <img src="/uploads/products/image/{{product.product.illustration}}" height="75x" alt="{{product.product.name}}">
+                        </div>
+                        <div class="col-8 my-auto">
+                            {{ product.product.name }}<br/>
+                            <small>{{ product.product.subtitle }}</small>
+                        </div>
+                        <div class="col-2 my-auto">
+                            x {{ product.quantity }}
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+
+
             </div>
 
     </div>

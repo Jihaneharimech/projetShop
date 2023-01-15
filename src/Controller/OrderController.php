@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Classe\Cart;
 use App\Form\OrderType;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -10,7 +11,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class OrderController extends AbstractController
 {
     #[Route('/commande', name: 'app_order')]
-    public function index(): Response
+    public function index(Cart $cart): Response
     {
         if (!$this->getUser()->getAdresses()->getValues())
         {
@@ -22,7 +23,8 @@ class OrderController extends AbstractController
         ]);
 
         return $this->render('order/index.html.twig',[
-            'form' => $form->createView()
+            'form' => $form->createView(),
+            'cart' => $cart->getFull() 
         ]);
     }
 }
