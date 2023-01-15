@@ -49,7 +49,7 @@
     <div class="text-right mb-5">
                 <b>Nombre de produit :</b> {{ cart|length }}<br/>
                 <b>Total de mon panier :</b> {{ (total / 100)|number_format(2, ',', '.') }} MAD
-                <a href="" class="btn btn-success btn-block mt-3">Commander</a>
+                <a href="{{ path('app_order') }}" class="btn btn-success btn-block mt-3">Commander</a>
             </div>
 {% else %}
     <hr>

@@ -95,3 +95,7 @@ body{
     margin-bottom: 15px;
     font-size: 12px;
 }
+.block-small{
+    max-width: 40%;
+    margin: 0 auto;
+}
