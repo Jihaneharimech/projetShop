@@ -11,6 +11,9 @@
     <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/css/stylejihaneshop.css') }}" rel="stylesheet">
 
+    {% block javascript %}
+    {% endblock %}
+
     <style>
         .bd-placeholder-img {
             font-size: 1.125rem;
@@ -27,6 +30,7 @@
             }
         }
     </style>
+
     <!-- Custom styles for this template -->
     <link href="{{ asset('assets/css/carousel.css') }} " rel="stylesheet">
 </head>
