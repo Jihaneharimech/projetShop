@@ -2,15 +2,11 @@
 
 namespace App\Controller;
 
-
-
-use Stripe\Stripe;
 use App\Classe\Cart;
 use App\Entity\Order;
 use DateTimeImmutable;
 use App\Form\OrderType;
 use App\Entity\OrderDetails;
-use Stripe\Checkout\Session;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -49,6 +45,7 @@ class OrderController extends AbstractController
         $form = $this->createForm(OrderType::class, null, [
             'user' => $this->getUser()
         ]);
+        
 
         $form->handleRequest($request);
 
@@ -70,7 +67,9 @@ class OrderController extends AbstractController
 
             // Enregistrer ma commande Order()
             $order = new Order();
+            
             $reference = $date->format('dmY').'-'.uniqid();
+            $order->setReference($reference);
             $order->setUser($this->getUser());
             $order->setCreatedAt($date);
             $order->setCarrierName($carriers->getName());
@@ -79,9 +78,6 @@ class OrderController extends AbstractController
             $order->setIsPaid(0);
 
             $this->entityManager->persist($order);
-
-            $products_for_stripe = [];
-            $YOUR_DOMAIN = 'http://127.0.0.1:8000';
 
             // Enregistrer mes produits OrderDetails()
             foreach ($cart->getFull() as $product) {
@@ -92,43 +88,16 @@ class OrderController extends AbstractController
                 $orderDetails->setPrice($product['product']->getPrice());
                 $orderDetails->setTotal($product['product']->getPrice() * $product['quantity']);
                 $this->entityManager->persist($orderDetails);
-
-                $products_for_stripe[] = [
-                    'price_data' => [
-                        'currency' => 'eur',
-                        'unit_amount' => $product['product']->getPrice(),
-                        'product_data' => [
-                            'name' => $product['product']->getName(),
-                            'images' => [$YOUR_DOMAIN."/uploads/products/image/".$product['product']->getIllustration()],
-                        ],
-                    ],
-                    'quantity' => $product['quantity'],
-                ];
         
             }
-     
-           // $this->entityManager->flush();
 
-                \Stripe\Stripe::setApiKey('sk_test_51HWkIiB2UQ1rR5yt3j6uDXYObRD6UroL0zFgMoctO6fnbwArb7XDMacSJJErqupnaeTnwDKi5r78nIXjTHW5MMLL00EMJVfose');
-                header('Content-Type: application/json');
-          
-                $checkout_session = \Stripe\Checkout\Session::create([
-                  'line_items' => [[
-                    # Provide the exact Price ID (e.g. pr_1234) of the product you want to sell
-                    $products_for_stripe
-                  ]],
-                  'mode' => 'payment',
-                  'success_url' => $YOUR_DOMAIN . '/success.html',
-                  'cancel_url' => $YOUR_DOMAIN . '/cancel.html',
-                ]);
-                header("HTTP/1.1 303 See Other");
-                header("Location: " . $checkout_session->url);
+            $this->entityManager->flush(); 
 
             return $this->render('order/add.html.twig', [
                 'cart' => $cart->getFull(),
                 'carrier' => $carriers,
                 'delivery' => $delivery_content,
-                'stripe_checkout_session' => $checkout_session->id
+                'reference' => $order->getReference()
             ]);
         }
 

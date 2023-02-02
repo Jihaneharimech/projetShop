@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mes commandes - La Boutique Française{% endblock %}
+
+{% block content %}
+    <h1>Mes commandes</h1>
+    C'est dans cet espace que vous allez pouvoir gérer toutes vos commandes.<br/>
+    <a href="{{ path('app_account') }}">Retour</a>
+    {% if orders|length == 0 %}
+        <hr>
+        <p class="text-center">
+            VOUS N’AVEZ PAS DE COMMANDE ENCORE
+        </p>
+    {% else %}
+        <table class="table mt-4">
+            <thead>
+            <tr>
+                <th scope="col">Référence</th>
+                <th scope="col">Statut</th>
+                <th scope="col">Passée le</th>
+                <th scope="col">Produit(s)</th>
+                <th scope="col">Total</th>
+                <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for order in orders %}
+                <tr>
+                    <td><span class="badge badge-secondary">{{ order.reference }}</span></td>
+                    <td>
+                  
+                    </td>
+                    <td>{{ order.createdAt|date('d/m/Y') }}</td>
+                    <td>{{ order.orderDetails|length }}</td>
+                    <td>{{ ((order.carrierPrice + order.getTotal) / 100)|number_format(2, ',', '.') }} DH</td>
+                    <td class="text-right"><a href="{{ path('app_account_order_show', { 'id' : order.id }) }}">Voir ma commande</a></td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+
+    {% endif %}
+{% endblock %}
