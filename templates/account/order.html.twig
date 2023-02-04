@@ -28,7 +28,16 @@
                 <tr>
                     <td><span class="badge badge-secondary">{{ order.reference }}</span></td>
                     <td>
-                  
+                       {% if order.state == 0 %}
+                            En Attente
+                       {% elseif order.state == 1 %}
+                            Paiement accepté
+                        {% elseif order.state == 2 %}
+                            Préparation en cours
+                        {% elseif order.state == 3 %}
+                            Livraison en cours
+                        {% endif %}
+
                     </td>
                     <td>{{ order.createdAt|date('d/m/Y') }}</td>
                     <td>{{ order.orderDetails|length }}</td>
