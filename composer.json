@@ -12,6 +12,7 @@
         "doctrine/doctrine-migrations-bundle": "^3.2",
         "doctrine/orm": "^2.13",
         "easycorp/easyadmin-bundle": "^4.5",
+        "mailjet/mailjet-apiv3-php": "^1.5",
         "phpdocumentor/reflection-docblock": "^5.3",
         "phpstan/phpdoc-parser": "^1.15",
         "sensio/framework-extra-bundle": "^6.1",
