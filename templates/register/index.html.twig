@@ -4,5 +4,10 @@
 
 {% block content %}
  <h1>Formulaire d'inscription</h1>
+ {% if notification %}
+        <div class="alert alert-info">{{ notification }}</div>
+        <hr>
+    {% endif %}
+
   {{ form(form)}}
 {% endblock %}
