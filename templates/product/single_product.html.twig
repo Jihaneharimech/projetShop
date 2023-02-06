@@ -1,0 +1,12 @@
+           
+<div class="product-item-wrapper">
+  <div class="product-item text-center">
+    <a href="{{ path('app_product', {'slug' : produit.slug}) }}"><img src="/uploads/products/image/{{ produit.illustration}}" alt="{{ produit.name}}" class="img-fluid"></a>
+      <div class="product-item-button">
+        <h5 >{{ produit.name }}</h5>
+        <span class="product-subtitle">{{ produit.subtitle }}</span>
+        <span class="product-price">{{ (produit.price /100) |number_format(2,',','.')}}</span>
+      </div>
+  </div>
+ </div>
+     
