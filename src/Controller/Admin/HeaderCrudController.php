@@ -21,15 +21,15 @@ class HeaderCrudController extends AbstractCrudController
     {
         return [
             TextField::new('title', 'Titre du header'),
-            TextareaField::new('content', 'Contenu de notre header'),
-            TextField::new('btnTitle', 'Titre de notre bouton'),
-            TextField::new('btnUrl', 'Url de destination de notre bouton'),
+            TextareaField::new('content', 'Contenu'),
+            TextField::new('btnTitle', 'Titre bouton'),
+            TextField::new('btnUrl', 'Url bouton'),
             ImageField::new('illustration','Image Header')
-            ->setBasePath('uploads/products/image/')
-            ->setUploadDir('public/uploads/products/image')
+            ->setBasePath('uploads/banner/')
+            ->setUploadDir('public/uploads/banner')
             ->setFormType(FileUploadType::class)
             ->setUploadedFileNamePattern('[randomhash].[extension]')
-            ->setRequired(false),
+            ->setRequired(false)
         ];
     }
     
