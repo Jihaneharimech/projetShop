@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nous contacter {% endblock %}
+
+{% block content %}
+    <h2>Nous contacter</h2>
+    <br/>
+    {% for message in app.flashes('notice') %}
+        <div class="alert alert-info">{{ message }}</div>
+    {% endfor %}
+    <div class="row">
+        <div class="col-md-4"> 
+        <strong>Contactez-nous</strong>
+            <hr>
+            <p>N'hésitez pas à prendre contact avec notre équipe, nous vous répondrons dans les meilleurs délais.</p>
+        {{ form(form) }}</div>
+        <div class="col-md-8">
+            <strong>JihaneShop</strong>
+            <hr>
+              <div class="row">
+                   <img src="{{ asset('assets/img/phone.png') }}" class="icone-contact" alt="Notre numéro">
+                   <p>06 20 30 40 50</p>
+              </div>
+            <div class="row">
+                   <img src="{{ asset('assets/img/map.png') }}" class="icone-contact" alt="Notre numéro">
+                  <p> 8 rue Sidi maarouf, 23000 Casablanca.</p>
+              </div> 
+              <div class="row">
+                   <img src="{{ asset('assets/img/email.png') }}" class="icone-contact" alt="Notre numéro">
+                   <p>contact@jihaneshop.com</p>
+              </div>
+           
+            <br/>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d26610.900427155473!2d-7.664165661913721!3d33.517958218280064!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xda62d07a826b0d9%3A0x6464ebaae0d1d64e!2sSidi%20Maarouf%2C%20Casablanca!5e0!3m2!1sfr!2sma!4v1676235200087!5m2!1sfr!2sma"
+             width="700" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+    </div>
+
+{% endblock %}
+
