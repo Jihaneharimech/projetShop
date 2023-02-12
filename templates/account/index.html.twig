@@ -12,7 +12,11 @@
                   </div>
                     <h4>NOM ET NOM DE FAMILLE : {{ app.user.firstname }} {{ app.user.lastname }}</h4>
                     <h4>ADRESSE E-MAIL : {{ app.user.email }}</h4>
-                    <a href="{{ path('app_account_password') }}"> Modifier le mot de passe </a>
+                    <a href="{{ path('app_account_password') }}"> Modifier le mot de passe </a><br/>
+                      {% if is_granted('ROLE_ADMIN') %}
+                    <a href="/admin">Vous êtes un administrateur, accéder au backoffice ?</a>
+                       {% endif %}
+
                 </div>
         </div>
 
