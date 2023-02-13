@@ -1,4 +1,4 @@
-JihaneShop est  un  site e-commerce développé avec Symfony5,Boostrap4,twig, API Strip
+JihaneShop est  un  site e-commerce développé avec Symfony5,Boostrap4,twig, Stripe API
 fonctionnalités:
 - Gestion des produits
 - Gestion des commandes
